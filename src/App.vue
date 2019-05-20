@@ -190,7 +190,9 @@
 
 <script>
 
-    import {$utils, $dom, StorageService} from './index'
+    import PlainUtils from 'plain-utils'
+
+    const {$utils, $dom, StorageService} = PlainUtils
 
     export default {
         name: 'app',
@@ -236,12 +238,12 @@
                 },
             }
         },
+        mounted() {
+            // console.log(PlainUtils)
+        },
         methods: {
             click3() {
                 this.val[3] = this.utils.deepCopy(this.utils.insertSort(this.val[3], (a, b) => a.order < b.order))
-                this.val[3].forEach(item => {
-                    console.log({...item})
-                })
             },
             async click20() {
                 await this.utils.delay(2000)

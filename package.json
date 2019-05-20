@@ -1,16 +1,20 @@
 {
   "name": "plain-utils",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
   "scripts": {
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib --name plain-utils src/index.js --dest dist --analysis --prod"
+    "build": "vue-cli-service build --target lib --name plain-utils src/index.js --dest dist --prod"
   },
+  "main": "dist/plain-utils.umd.min.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "core-js": "^2.6.5",
     "fecha": "^3.0.3",
+    "plain-utils": "^0.1.0",
     "store": "^2.0.12",
     "vue": "^2.6.10"
   },

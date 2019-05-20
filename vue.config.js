@@ -6,6 +6,7 @@ const arg = $utils.decodeArgv()
 /*添加插件*/
 const plugins = []
 !!arg.analysis && plugins.push(new BundleAnalyzerPlugin({analyzerPort: '9999'}))                        //如果命令行参数中存在analysis，则启用webpack-bundle-analysis插件分析打包数据
+const isProduction = !!arg.prod
 
 const option = {
     lintOnSave: false,
@@ -23,8 +24,11 @@ const option = {
             ...plugins,
         ],
         externals: {
-            'vue': 'Vue',
-        }
+            ...(isProduction ? {
+                'vue': 'Vue',
+                'plain-utils': 'plain-utils',
+            } : {})
+        },
     },
 }
 
