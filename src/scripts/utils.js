@@ -10,7 +10,7 @@ const MOZ_HACK_REGEXP = /^moz([A-Z])/;
  * @author 韦胜健
  * @date 2018/11/14
  */
-function KebabCase(str) {
+function kebabCase(str) {
     return str.replace(/[A-Z]/g, function (i) {
         return '-' + i.toLowerCase();
     })
@@ -441,7 +441,7 @@ function chunk(array, size) {
 }
 
 const $utils = {
-    KebabCase,                                  //驼峰命名转横杠命名
+    kebabCase,                                  //驼峰命名转横杠命名
     camelCase,                                  //转为驼峰命名
 
     chunk,                                      //将数组分块
