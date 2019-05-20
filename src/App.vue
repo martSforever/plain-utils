@@ -246,6 +246,7 @@
             async click20() {
                 await this.utils.delay(2000)
                 alert('done')
+                throw new Error("error")
             },
             click24() {
                 this.utils.keyboard.addListener({

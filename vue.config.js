@@ -8,7 +8,7 @@ const plugins = []
 !!arg.analysis && plugins.push(new BundleAnalyzerPlugin({analyzerPort: '9999'}))                        //如果命令行参数中存在analysis，则启用webpack-bundle-analysis插件分析打包数据
 
 const option = {
-    lintOnSave:false,
+    lintOnSave: false,
     devServer: {
         port: '7557',
     },
@@ -21,7 +21,10 @@ const option = {
         },
         plugins: [
             ...plugins,
-        ]
+        ],
+        externals: {
+            'vue': 'Vue',
+        }
     },
 }
 
