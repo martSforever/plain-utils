@@ -346,86 +346,6 @@ function removeSome(array, fn) {
     }
 }
 
-/**
- * desc 手机号码格式化
- * @author huyang
- * @date 2018/12/11 13:43
- * @params
- */
-export function telFormat(d) {
-    if (d == null) return ''
-    d = String(d);
-    d = d.trim();
-    if (d.length >= 11) {
-        let d1 = d.substr(d.length - 4, 4);
-        let d2 = d.substr(d.length - 8, 4);
-        let d3 = d.substr(d.length - 11, 3);
-        return d3 + ' ' + d2 + ' ' + d1;
-    } else {
-        return d;
-    }
-}
-
-/**
- * desc 金额格式化，并保留两位小数
- * @author huyang
- * @date 2018/12/11 13:45
- * @params
- */
-export function moneyFormat(val) {
-    if (val || val == 0) {
-        val = val.toString().replace(/\$|\, /g, '');
-        if (isNaN(val)) {
-            val = '0';
-        }
-        const sign = val == (val = Math.abs(val));
-        val = Math.floor(val * 100 + 0.50000000001);
-        let cents = val % 100;
-        val = Math.floor(val / 100).toString();
-        if (cents < 10) {
-            cents = '0' + cents;
-        }
-        for (let i = 0; i < Math.floor((val.length - (1 + i)) / 3); i++) {
-            val = val.substring(0, val.length - (4 * i + 3)) + ',' + val.substring(val.length - (4 * i + 3));
-        }
-        return (sign ? '' : '-') + val + '.' + cents;
-    }
-}
-
-/**
- * desc 转化为人民币显示，并保留两位小数
- * @author huyang
- * @date 2018/12/11 13:47
- * @params
- */
-export function cnyFormat(d) {
-    // 转换为人民币显示
-    if (!d) {
-        return '￥0';
-    }
-    if (isNaN(d)) {
-        return '无效的金额';
-    }
-    let dd = parseFloat(d);
-    return '￥' + String(dd.toFixed(2)).replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
-}
-
-/**
- * desc 转化为百分比显示，并保留两位小数
- * @author huyang
- * @date 2018/12/11 13:47
- * @params
- */
-export function percentNumFormat(d) {
-    //转换为两位小数
-    if (d == null) {
-        return "";
-    }
-    if (isNaN(d)) {
-        return "";
-    }
-    return parseFloat(d).toFixed(4) * 100 + '%';
-}
 
 /**
  * 生成url地址
@@ -433,7 +353,7 @@ export function percentNumFormat(d) {
  * @date    2019/4/2 10:06
  */
 function encodeUrl(url, data) {
-    url = url.indexOf('?') < 0 ? '?' : '&';
+    url = url + (url.indexOf('?') < 0 ? '?' : '&')
     let paramString = ''
     Object.keys(data).forEach(key => {
         let value = data[key] != null ? data[key] : '';
@@ -539,7 +459,6 @@ const $utils = {
     removeSome,                                 //从数组中删除部分元素
     oneOf,                                      //判断是否存在于数组中
 
-
     uuid,                                       //获取唯一标识符
     zeroize,                                    //填充0字符
     removePx,                                   //去掉px,返回数字
@@ -552,10 +471,6 @@ const $utils = {
 
     deepCopy,                                   //深度复制
     typeOf,                                     //判断变量类型
-    telFormat,                                  //电话号码格式化
-    moneyFormat,                                //金额格式化
-    cnyFormat,                                  //人民币格式化
-    percentNumFormat,                           //百分比格式化
     keyboard,                                   //监听键盘事件
     encodeUrl,                                  //生成url地址
     decodeUrl,                                  //解析url地址

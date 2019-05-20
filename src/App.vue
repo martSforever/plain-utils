@@ -140,6 +140,51 @@
             <button @click="utils.copyToClipboard(val[19])">执行</button>
             <input type="text">
         </div>
+        <div class="item">
+            <div class="title">引入js,addScript</div>
+            <button @click="utils.addScript(val[20])">执行</button>
+            <div class="val">
+                {{val[20]}}
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">推迟时间,delay</div>
+            <button @click="utils.delay(2000).then(click20)">执行</button>
+        </div>
+        <div class="item">
+            <div class="title">深度复制,deepCopy</div>
+            <button @click="val[21] = utils.deepCopy(val[22])">执行</button>
+            <div class="val">
+                {{val[21]}} === {{val[22]}}?{{val[21] === val[22]}}
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="title">判断变量类型,typeOf</div>
+            <button @click="val[23] = utils.typeOf(val[23])">执行</button>
+            <div class="val">
+                {{val[23]}}
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">监听键盘事件,keyboard</div>
+            <button @click="click24">执行</button>
+        </div>
+        <div class="item">
+            <div class="title">生成url地址,encodeUrl</div>
+            <button @click="val[25] = utils.encodeUrl(val[25],{id:111,name:222,path:'home/doc'})">执行</button>
+            <div class="val">
+                {{val[25]}}
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">解析url地址,decodeUrl</div>
+            <button @click="val[26] = utils.decodeUrl(val[26])">执行</button>
+            <div class="val">
+                {{val[26]}}
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -150,6 +195,7 @@
     export default {
         name: 'app',
         data() {
+            const val21 = {name: 111}
             return {
                 utils: $utils,
                 dom: $dom,
@@ -181,6 +227,12 @@
                     16: '100px',
                     17: 200,
                     18: '{aaa:"解析json",ddd:22,name:"nihaoya"}',
+                    20: 'https://cdn.jsdelivr.net/npm/vue',
+                    21: val21,
+                    22: val21,
+                    23: {hello: 111},
+                    25: 'https://www.baidu.com',
+                    26: 'https://www.baidu.com?id=111&name=222&path=home%2Fdoc'
                 },
             }
         },
@@ -189,6 +241,17 @@
                 this.val[3] = this.utils.deepCopy(this.utils.insertSort(this.val[3], (a, b) => a.order < b.order))
                 this.val[3].forEach(item => {
                     console.log({...item})
+                })
+            },
+            async click20() {
+                await this.utils.delay(2000)
+                alert('done')
+            },
+            click24() {
+                this.utils.keyboard.addListener({
+                    'enter': () => {
+                        alert('enter')
+                    }
                 })
             },
         }
