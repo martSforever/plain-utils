@@ -6655,7 +6655,7 @@ var MOZ_HACK_REGEXP = /^moz([A-Z])/;
  * @date 2018/11/14
  */
 
-function KebabCase(str) {
+function kebabCase(str) {
   return str.replace(/[A-Z]/g, function (i) {
     return '-' + i.toLowerCase();
   });
@@ -6984,9 +6984,17 @@ function shuffle(array) {
 
 
 function findOne(array, fn) {
+  var index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
   for (var i = 0; i < array.length; i++) {
     var item = array[i];
-    if (!!fn(item)) return item;
+
+    if (!!fn(item)) {
+      return !index ? item : {
+        item: item,
+        index: i
+      };
+    }
   }
 
   return null;
@@ -7147,9 +7155,17 @@ function chunk(array, size) {
 
   return result;
 }
+/**
+ * 空函数
+ * @author  韦胜健
+ * @date    2019/5/23 09:32
+ */
+
+
+function utils_noop() {}
 
 var $utils = {
-  KebabCase: KebabCase,
+  kebabCase: kebabCase,
   //驼峰命名转横杠命名
   camelCase: camelCase,
   //转为驼峰命名
@@ -7201,7 +7217,9 @@ var $utils = {
   //监听键盘事件
   encodeUrl: encodeUrl,
   //生成url地址
-  decodeUrl: decodeUrl //解析url地址
+  decodeUrl: decodeUrl,
+  //解析url地址
+  noop: utils_noop //空函数
 
 };
 /* harmony default export */ var utils = ($utils);

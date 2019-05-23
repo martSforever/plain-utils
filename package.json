@@ -1,6 +1,6 @@
 {
   "name": "plain-utils",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "start": "npm run serve",
     "serve": "vue-cli-service serve",

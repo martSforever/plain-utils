@@ -442,6 +442,14 @@ function chunk(array, size) {
     return result
 }
 
+/**
+ * 空函数
+ * @author  韦胜健
+ * @date    2019/5/23 09:32
+ */
+function noop() {
+}
+
 const $utils = {
     kebabCase,                                  //驼峰命名转横杠命名
     camelCase,                                  //转为驼峰命名
@@ -476,6 +484,7 @@ const $utils = {
     keyboard,                                   //监听键盘事件
     encodeUrl,                                  //生成url地址
     decodeUrl,                                  //解析url地址
+    noop,                                       //空函数
 }
 
 export default $utils
