@@ -1,6 +1,6 @@
 {
   "name": "plain-utils",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "scripts": {
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
@@ -14,7 +14,6 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "fecha": "^3.0.3",
-    "plain-utils": "^0.1.0",
     "store": "^2.0.12",
     "vue": "^2.6.10"
   },
