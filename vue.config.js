@@ -18,6 +18,7 @@ const option = {
             extensions: ['.js', '.vue', '.json'],
             alias: {
                 'src': $utils.resolve('src'),
+                'plain-utils': $utils.resolve('src'),
             }
         },
         plugins: [

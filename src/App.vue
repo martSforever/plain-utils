@@ -240,6 +240,8 @@
         },
         mounted() {
             // console.log(PlainUtils)
+            console.log(Object.prototype.toString.call(new Promise(() => {
+            })))
         },
         methods: {
             click3() {

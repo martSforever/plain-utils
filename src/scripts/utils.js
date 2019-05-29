@@ -178,7 +178,8 @@ function typeOf(obj) {
         '[object RegExp]': 'regExp',
         '[object Undefined]': 'undefined',
         '[object Null]': 'null',
-        '[object Object]': 'object'
+        '[object Object]': 'object',
+        '[object Promise]': 'promise',
     };
     return map[toString.call(obj)];
 }
