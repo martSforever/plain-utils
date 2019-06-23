@@ -300,7 +300,7 @@ function shuffle(array) {
 function findOne(array, fn, index = false) {
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
-        if (!!fn(item)) {
+        if (!!fn(item, i)) {
             return !index ? item : {item, index: i}
         }
     }
